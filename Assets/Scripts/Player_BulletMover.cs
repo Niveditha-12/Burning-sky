@@ -22,15 +22,10 @@ public class Player_BulletMover : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.gameObject.tag == "EnemyBullet")
-        {
-            Destroy(other.gameObject);
-            Destroy(this.gameObject);
-            
-        }
+        
         if (other.gameObject.tag == "EnemyShip")
         {
-            //Destroy(other.gameObject);
+            
             Destroy(this.gameObject);
 
         }
