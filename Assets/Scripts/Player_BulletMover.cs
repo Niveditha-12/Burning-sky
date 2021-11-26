@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player_BulletMover : MonoBehaviour
 {
     [SerializeField]
-    private float bullet_Speed = 3f;
+    private float bullet_Speed = 10f;
     private Rigidbody2D rigidBody;
     public Game_Control game_Control;
     
@@ -18,7 +18,7 @@ public class Player_BulletMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        rigidBody.velocity = new Vector2(0, bullet_Speed);
     }
    
 }

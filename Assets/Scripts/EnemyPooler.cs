@@ -6,7 +6,7 @@ public class EnemyPooler : MonoBehaviour
 {
     public static EnemyPooler SharedInstance;
     public List<GameObject> pooledObjects;
-    public List<GameObject> inActiveObjects;
+   
     public GameObject objectToPool;
     public int amountToPool;
     void Awake()
@@ -33,15 +33,15 @@ public class EnemyPooler : MonoBehaviour
     }
     public GameObject GetPooledObject()
     {
-        inActiveObjects = new List<GameObject>();
+       
         for (int i = 0; i < amountToPool; i++)
         {
             
             if (!pooledObjects[i].activeInHierarchy)
             {
-                //inActiveObjects.Add(pooledObjects[i]);
+               
                 return pooledObjects[i];
-                //return inActiveObjects;
+               
                 
             }
         }

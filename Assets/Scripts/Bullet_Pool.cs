@@ -23,7 +23,9 @@ public class Bullet_Pool : MonoBehaviour
             obj = Instantiate(objectToPool);
             obj.SetActive(false);
             pooledObjects.Add(obj);
+            print(pooledObjects.Count);
         }
+        Player_Control.SharedInstance.Spawn();
     }
 
     // Update is called once per frame
@@ -33,15 +35,15 @@ public class Bullet_Pool : MonoBehaviour
     }
     public GameObject GetPooledObject()
     {
-        inActiveObjects = new List<GameObject>();
+        
         for (int i = 0; i < amountToPool; i++)
         {
 
             if (!pooledObjects[i].activeInHierarchy)
             {
-                //inActiveObjects.Add(pooledObjects[i]);
+                
                 return pooledObjects[i];
-                //return inActiveObjects;
+               
 
             }
         }

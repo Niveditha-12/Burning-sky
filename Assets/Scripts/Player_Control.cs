@@ -12,6 +12,7 @@ public class Player_Control : MonoBehaviour
     public bool powerShield = false;
     bool powerShoot = false;
     public GameObject shield;
+    public int no_of_bullets;
     private float bullet_Speed = 3f;
 
     private void Awake()
@@ -20,7 +21,7 @@ public class Player_Control : MonoBehaviour
     }
     void Start()
     {
-        Spawn();
+        //Spawn();
     }
 
     // Update is called once per frame
@@ -35,32 +36,44 @@ public class Player_Control : MonoBehaviour
     }
     public void Spawn()
     {
-        for (int i = 0; i < 3; i++)
+        if (!powerShoot)
         {
-            GameObject bullet = Bullet_Pool.SharedInstance.GetPooledObject();
+            no_of_bullets = 3;
+        }
+        if (powerShoot)
+        {
+            no_of_bullets = 5;
+        }
 
-            if (bullet != null)
+        for (int i = 0; i < no_of_bullets; i++)
             {
-                float j = -1f + i;
-                Vector3 spawnPos = transform.position;
-                spawnPos += new Vector3(j, 1.2f, 0);
-                bullet.transform.position = spawnPos;
-                bullet.SetActive(true);
-                Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();
-                rigidBody.velocity = new Vector2(0, bullet_Speed);
+            
+            GameObject bullet = Bullet_Pool.SharedInstance.GetPooledObject();
+            
+            if (bullet != null)
+            {      
+                      
+                   float j = -1f + i;
+                    Vector3 spawnPos = transform.position;
+                    spawnPos += new Vector3(j, 1.2f, 0);
+                    bullet.transform.position = spawnPos;
+                    bullet.SetActive(true);
+                    Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();
+                    rigidBody.velocity = new Vector2(0, bullet_Speed);    
+                
             }
 
             
         }
-            
-        
-        Invoke("Spawn", .5f);
-        
-        
+        Invoke("Spawn", 1f);
+
+
+
     }
     
     void PlayerMovement() //move the player with arrow keys.
     {
+        
         PlayerBoundary(); 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");

@@ -5770,7 +5770,9 @@ MonoBehaviour:
   gameController: {fileID: 1193844722}
   bulletPrefab: {fileID: 3684534365723956955, guid: 2280520d462d4ae48ae522f6764e4f1c,
     type: 3}
+  powerShield: 0
   shield: {fileID: 520976353}
+  no_of_bullets: 0
 --- !u!1 &1193844721
 GameObject:
   m_ObjectHideFlags: 0
@@ -5854,7 +5856,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
-  inActiveObjects: []
   objectToPool: {fileID: 4171237694060933354, guid: d62dd199c5060c14788da7486b8aec86,
     type: 3}
   amountToPool: 3
@@ -5874,7 +5875,7 @@ MonoBehaviour:
   inActiveObjects: []
   objectToPool: {fileID: 3684534365723956955, guid: 2280520d462d4ae48ae522f6764e4f1c,
     type: 3}
-  amountToPool: 6
+  amountToPool: 18
 --- !u!1 &1278621259
 GameObject:
   m_ObjectHideFlags: 0

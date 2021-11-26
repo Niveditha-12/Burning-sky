@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Game_Control : MonoBehaviour
 {
@@ -59,8 +60,16 @@ public class Game_Control : MonoBehaviour
         }
         
         playerScore += 25;
-        enemyHealthText.text = "Enemy Health : " + enemyHealth.ToString();
-        scoreText.text = "Score :" + playerScore.ToString();
+        if(enemyHealth >=0)
+        {
+            enemyHealthText.text = "Enemy Health : " + enemyHealth.ToString();
+        }
+        if (enemyHealth < 0)
+        {
+            enemyHealthText.text = "Enemy Health : " + 0;
+        }
+
+            scoreText.text = "Score :" + playerScore.ToString();
         if (enemyHealth<=0)
         {
             enemy.DestroEnemy();
@@ -72,5 +81,16 @@ public class Game_Control : MonoBehaviour
         gameOverText.enabled = true; // Display the Game Over! Text
         Time.timeScale = 0; // This freezes the game
     }
-    
+    public void LoadNextLevel()
+    {
+        
+
+        int nextSceneIndex = (SceneManager.GetActiveScene().buildIndex + 1)
+            % SceneManager.sceneCountInBuildSettings;
+        if (nextSceneIndex >= 0 && nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+    }
+
 }
