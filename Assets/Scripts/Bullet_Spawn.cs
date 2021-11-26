@@ -10,21 +10,22 @@ public class Bullet_Spawn : MonoBehaviour
     private float elapsedTime = 0;
     private float elapsedTime1 = 0;
     public float reloadTime = 10f;
+    
 
     void Start()
     {
-        //Spawn();
+        
     }
 
     public void Spawn()
     {
         elapsedTime = 0;
         Bullet();
-        StartCoroutine(Example());
-        IEnumerator Example()
+        StartCoroutine(FireTime());
+        IEnumerator FireTime()
         {
             
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1); // Time to continously fire bullets.
             elapsedTime = 2;
         }
 
@@ -33,13 +34,12 @@ public class Bullet_Spawn : MonoBehaviour
 
     void Bullet()
     {
-         
-        
+                
         Vector3 spawnPos = this.transform.parent.position + new Vector3(0, 0, 0);
         Instantiate(bulletPrefab, spawnPos, transform.parent.rotation);
         if (elapsedTime < 2)
         {
-            Invoke("Bullet", .2f);
+            Invoke("Bullet", .2f);// spawn bullets every .2s for 1 second.
         }
         
     }

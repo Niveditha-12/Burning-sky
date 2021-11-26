@@ -7,11 +7,12 @@ public class Player_BulletMover : MonoBehaviour
     [SerializeField]
     private float bullet_Speed = 3f;
     private Rigidbody2D rigidBody;
+    public Game_Control game_Control;
     
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>(); //Give bullet an initial upward velocity
-        rigidBody.velocity = new Vector2(0, bullet_Speed);
+        rigidBody = GetComponent<Rigidbody2D>(); 
+        rigidBody.velocity = new Vector2(0, bullet_Speed);//Give bullet an initial upward velocity
     }
 
     // Update is called once per frame
@@ -19,16 +20,5 @@ public class Player_BulletMover : MonoBehaviour
     {
         
     }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-
-        
-        if (other.gameObject.tag == "EnemyShip")
-        {
-            
-            Destroy(this.gameObject);
-
-        }
-
-    }
+   
 }

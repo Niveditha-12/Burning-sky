@@ -7,8 +7,10 @@ public class Player_Control : MonoBehaviour
     public float playerSpeed = 10f;
     public Game_Control gameController;
     public GameObject bulletPrefab;
-    public float reloadTime = 0.2f; // Player can fire a bullet every half second
+    public float reloadTime = 0.1f; // Player can fire a bullet every .1 second
     private float elapsedTime = 0;
+    bool powerUp = false;
+    public GameObject shield;
 
     void Start()
     {
@@ -18,6 +20,7 @@ public class Player_Control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(powerUp);
         elapsedTime += Time.deltaTime;
         PlayerMovement();
         if (Input.GetButtonDown("Jump") && elapsedTime > reloadTime)
@@ -50,8 +53,31 @@ public class Player_Control : MonoBehaviour
         if (other.gameObject.tag == "EnemyBullet")
         {
             Destroy(other.gameObject);
-            gameController.HealthScore();
+            if (powerUp == false)
+            {
+                gameController.HealthScore();
+            }
+           
         }
-        
+        if (other.gameObject.tag == "PowerShield")
+        {
+            Destroy(other.gameObject);
+            PowerupCollected();
+        }
+    }
+    public void PowerupCollected() // when powerup is collected, play particle system (shield) for 4 seconds and stop.
+    {
+        powerUp = true;
+        shield.SetActive(true);
+        StartCoroutine(PowerUpTime());
+        IEnumerator PowerUpTime()
+        {
+
+            yield return new WaitForSeconds(10); // Time to continously fire bullets.
+            shield.SetActive(false);
+            powerUp = false;
+        }
+
+
     }
 }

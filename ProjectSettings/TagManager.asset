@@ -8,6 +8,8 @@ TagManager:
   - EnemyBullet
   - Projectile
   - EnemyShip
+  - PlayerBullet
+  - PowerShield
   layers:
   - Default
   - TransparentFX

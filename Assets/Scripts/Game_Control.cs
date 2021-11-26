@@ -5,10 +5,22 @@ using UnityEngine.UI;
 
 public class Game_Control : MonoBehaviour
 {
-    public Text scoreText, healthText, gameOverText; // Note we declare two text elements here
+    public Text scoreText, healthText, enemyHealthText, gameOverText; // Note we declare two text elements here
     int playerScore = 0; 
     int playerHealth = 100;
-    int enemyHealth = 100;
+    public int enemyHealth = 100;
+    public EnemyControl enemy;
+    public SpawnEnemies spawnEnemy;
+
+    private void Start()
+    {
+        //FindEnemy();
+    }
+
+    public void FindEnemy()
+    {
+        enemy = FindObjectOfType<EnemyControl>();
+    }
     public void AddScore()
     {
         playerScore++;
@@ -19,15 +31,23 @@ public class Game_Control : MonoBehaviour
     {
         playerHealth--;
         healthText.text = "Health : " + playerHealth.ToString();
-        
+        if(playerHealth==0)
+        {
+            PlayerDied();
+        }
     }
 
     public void EnemyHealth()
     {
-        enemyHealth += -5;
-        if(enemyHealth==0)
+        enemy = FindObjectOfType<EnemyControl>();
+        enemyHealth += -50;
+        playerScore += 25;
+        enemyHealthText.text = "Enemy Health : " + enemyHealth.ToString();
+        scoreText.text = "Score :" + playerScore.ToString();
+        if (enemyHealth==0)
         {
-
+            enemy.DestroEnemy();
+            spawnEnemy.manageList();
         }
     }
     public void PlayerDied()
@@ -35,4 +55,5 @@ public class Game_Control : MonoBehaviour
         gameOverText.enabled = true; // Display the Game Over! Text
         Time.timeScale = 0; // This freezes the game
     }
+    
 }
