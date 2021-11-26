@@ -11,15 +11,16 @@ public class Bullet_Mover : MonoBehaviour
     {
         target = GameObject.Find("Player");
         rigidBody = GetComponent<Rigidbody2D>();
-        
+       
     }
 
     
     void Update()
-    { 
+    {
         //fire in the direction of player
         Vector2 direction = target.transform.position - transform.position;
-        rigidBody.AddForce(direction* bullet_Speed);
+        rigidBody.AddForce(direction * bullet_Speed);
+
     }
     
 }

@@ -52,8 +52,8 @@ public class EnemyControl : MonoBehaviour
         {
 
             game_Control.EnemyHealth();
-            Destroy(other.gameObject);
-
+            other.gameObject.SetActive(false);
+            
         }
 
     }

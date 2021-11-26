@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Game_Control : MonoBehaviour
 {
+    public static Game_Control SharedInstance;
     public Text scoreText, healthText, enemyHealthText, gameOverText; // Note we declare two text elements here
     int playerScore = 0; 
     int playerHealth = 100;
@@ -12,6 +13,10 @@ public class Game_Control : MonoBehaviour
     public EnemyControl enemy;
     public SpawnEnemies spawnEnemy;
 
+    private void Awake()
+    {
+        SharedInstance = this;
+    }
     private void Start()
     {
         //FindEnemy();
@@ -52,7 +57,7 @@ public class Game_Control : MonoBehaviour
         {
             enemyHealth += -15;
         }
-
+        
         playerScore += 25;
         enemyHealthText.text = "Enemy Health : " + enemyHealth.ToString();
         scoreText.text = "Score :" + playerScore.ToString();

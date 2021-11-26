@@ -5591,7 +5591,7 @@ GameObject:
   - component: {fileID: 1110585456}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5782,6 +5782,8 @@ GameObject:
   - component: {fileID: 1193844723}
   - component: {fileID: 1193844722}
   - component: {fileID: 1193844724}
+  - component: {fileID: 1193844725}
+  - component: {fileID: 1193844726}
   m_Layer: 0
   m_Name: Game_Manager
   m_TagString: Untagged
@@ -5839,6 +5841,40 @@ MonoBehaviour:
   powerShootPrefab: {fileID: 1750600609417348046, guid: bf72d644546576b4ca00a76b5040ca66,
     type: 3}
   spawnCycle: 15
+--- !u!114 &1193844725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193844721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f206029e2e7cd4186260456992d1a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  inActiveObjects: []
+  objectToPool: {fileID: 4171237694060933354, guid: d62dd199c5060c14788da7486b8aec86,
+    type: 3}
+  amountToPool: 3
+--- !u!114 &1193844726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193844721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2806d6fb0c6bbd348b27a37213455818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  inActiveObjects: []
+  objectToPool: {fileID: 3684534365723956955, guid: 2280520d462d4ae48ae522f6764e4f1c,
+    type: 3}
+  amountToPool: 6
 --- !u!1 &1278621259
 GameObject:
   m_ObjectHideFlags: 0
@@ -6316,6 +6352,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game_Control: {fileID: 1193844722}
   EnemyList: []
+  startWait: 1
+  waveInterval: 2
+  spawnInterval: 0.5
+  enemiesPerWave: 5
+  enemyType1: {fileID: 4171237694060933354, guid: d62dd199c5060c14788da7486b8aec86,
+    type: 3}
 --- !u!1 &2085047208
 GameObject:
   m_ObjectHideFlags: 0

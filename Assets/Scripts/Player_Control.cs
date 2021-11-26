@@ -4,49 +4,61 @@ using UnityEngine;
 
 public class Player_Control : MonoBehaviour
 {
+    public static Player_Control SharedInstance;
     public float playerSpeed = 10f;
     public Game_Control gameController;
     public GameObject bulletPrefab;
     private float elapsedTime = 0;
-    bool powerShield = false;
+    public bool powerShield = false;
     bool powerShoot = false;
     public GameObject shield;
+    private float bullet_Speed = 3f;
 
+    private void Awake()
+    {
+        SharedInstance = this;
+    }
     void Start()
     {
-        
+        Spawn();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
 
         
         PlayerMovement();
-        if (Input.GetButtonDown("Jump") ) 
-        {
-            if(!powerShoot)
-            {
-                Vector3 spawnPos = transform.position;
-                spawnPos += new Vector3(0, 1.2f, 0);// Instantiate the bullet 1.2 units in front of the player
-                Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
-            }
-            
-            if(powerShoot)// if power shoot is activated, then start spray shoot.
-            {
-                
-                for(int i = 0; i < 5; i++)
-                {
-                    float j = -2f +i;
-                    Vector3 spawnPos = transform.position;
-                    spawnPos += new Vector3(j, 1.2f, 0);// Instantiate the bullet 1.2 units in front of the player
-                    Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
-                }
-                
-                
-            }
-        }
+        
+        
     }
+    public void Spawn()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject bullet = Bullet_Pool.SharedInstance.GetPooledObject();
+
+            if (bullet != null)
+            {
+                float j = -1f + i;
+                Vector3 spawnPos = transform.position;
+                spawnPos += new Vector3(j, 1.2f, 0);
+                bullet.transform.position = spawnPos;
+                bullet.SetActive(true);
+                Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();
+                rigidBody.velocity = new Vector2(0, bullet_Speed);
+            }
+
+            
+        }
+            
+        
+        Invoke("Spawn", .5f);
+        
+        
+    }
+    
     void PlayerMovement() //move the player with arrow keys.
     {
         PlayerBoundary(); 

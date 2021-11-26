@@ -17,7 +17,19 @@ public class Destroy : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        
-        Destroy(other.gameObject);
+        if (other.gameObject.tag == "PlayerBullet")
+        {
+
+            //game_Control.EnemyHealth();
+            other.gameObject.SetActive(false);
+
+        }
+
+        if (other.gameObject.tag == "EnemyBullet")
+        {
+
+            Destroy(other.gameObject);
+
+        }
     }
 }
