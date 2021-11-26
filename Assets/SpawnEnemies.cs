@@ -9,7 +9,7 @@ public class SpawnEnemies : MonoBehaviour
     void Start() // having enemies in a list to spawn them when needed.
     {
         Object[] subListPrefab = Resources.LoadAll("EnemyPrefabs", typeof(GameObject));
-        print(subListPrefab.Length);// get all enemy prefabs in an array.
+     // get all enemy prefabs in an array.
         foreach (GameObject x in subListPrefab)
         {
             GameObject lo = (GameObject)x;
@@ -33,13 +33,16 @@ public class SpawnEnemies : MonoBehaviour
     {
         
     }
-    public void manageList() //if list is not empty then, spawn enemies as listed.
+    public void manageList() //if list is not empty then, remove enemy1 from list and spawn bigger enemy..
     {
-        if(EnemyList.Count>0)
+
+        if(EnemyList.Count > 1)
         {
+            print(EnemyList.Count);
             EnemyList.RemoveAt(0);
             SpawnEnemy();
         }
+        
         
         
     }

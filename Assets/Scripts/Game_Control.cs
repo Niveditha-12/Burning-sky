@@ -39,15 +39,27 @@ public class Game_Control : MonoBehaviour
 
     public void EnemyHealth()
     {
-        enemy = FindObjectOfType<EnemyControl>();
-        enemyHealth += -50;
+        enemy = FindObjectOfType<EnemyControl>();//to call destroy function on enemy.
+        if(enemy.tag==("Enemy-1"))
+        {
+            enemyHealth += -30;
+        }
+        else if(enemy.tag==("Enemy-2"))
+        {
+            enemyHealth += -20;
+        }
+        else if (enemy.tag == ("Enemy-3"))
+        {
+            enemyHealth += -15;
+        }
+
         playerScore += 25;
         enemyHealthText.text = "Enemy Health : " + enemyHealth.ToString();
         scoreText.text = "Score :" + playerScore.ToString();
-        if (enemyHealth==0)
+        if (enemyHealth<=0)
         {
             enemy.DestroEnemy();
-            spawnEnemy.manageList();
+            spawnEnemy.manageList(); //remove enemy1 from list and spawn bigger enemy.
         }
     }
     public void PlayerDied()

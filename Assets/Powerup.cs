@@ -5,25 +5,34 @@ using UnityEngine;
 public class Powerup : MonoBehaviour
 {
     
-    public GameObject powerupPrefab;
-    public float spawnCycle = 0.5f;
+    public GameObject powerShieldPrefab;
+    public GameObject powerShootPrefab;
+    [SerializeField]
+    public float spawnCycle = 5f;
     private float timeElapsed = 0;
-    private bool spawnPowerup = true;
+    private bool shieldPowerup = true;
     void Update()
     {
+
         timeElapsed += Time.deltaTime;
         if (timeElapsed > spawnCycle)
         {
             GameObject temp;
-            if (spawnPowerup)
+            if (shieldPowerup) //instantiate power shoot prefab
             {
-                temp = Instantiate(powerupPrefab) as GameObject;
+                temp = Instantiate(powerShieldPrefab) as GameObject;
                 Vector3 pos = temp.transform.position;
                 temp.transform.position = new Vector3(Random.Range(-3, 4), pos.y, pos.z);
             }
-            
+            else //instantiate power shield prefab
+            {
+                temp = Instantiate(powerShootPrefab) as GameObject;
+                Vector3 pos = temp.transform.position;
+                temp.transform.position = new Vector3(Random.Range(-3, 4), pos.y, pos.z);
+            }
+
             timeElapsed -= spawnCycle;
-            spawnPowerup = !spawnPowerup;
+            shieldPowerup = !shieldPowerup; //alternating between power ups.
         }
     }
 }

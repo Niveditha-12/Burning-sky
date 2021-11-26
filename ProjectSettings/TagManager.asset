@@ -7,9 +7,13 @@ TagManager:
   - Boundary
   - EnemyBullet
   - Projectile
-  - EnemyShip
   - PlayerBullet
   - PowerShield
+  - PowerShoot
+  - Enemy-2
+  - Enemy-3
+  - Enemy-1
+  - EnemyShip
   layers:
   - Default
   - TransparentFX
