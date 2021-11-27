@@ -8,11 +8,12 @@ public class Game_Control : MonoBehaviour
 {
     public static Game_Control SharedInstance;
     public Text scoreText, healthText, enemyHealthText, gameOverText; // Note we declare two text elements here
-    int playerScore = 0; 
+    public int playerScore = 0; 
     int playerHealth = 100;
     public int enemyHealth = 100;
     public EnemyControl enemy;
     public SpawnEnemies spawnEnemy;
+    public GameObject NextStageButton;
 
     private void Awake()
     {
@@ -20,7 +21,7 @@ public class Game_Control : MonoBehaviour
     }
     private void Start()
     {
-        //FindEnemy();
+        Time.timeScale = 1;
     }
 
     public void FindEnemy()
@@ -48,15 +49,15 @@ public class Game_Control : MonoBehaviour
         enemy = FindObjectOfType<EnemyControl>();//to call destroy function on enemy.
         if(enemy.tag==("Enemy-1"))
         {
-            enemyHealth += -30;
+            enemyHealth += -8;
         }
         else if(enemy.tag==("Enemy-2"))
         {
-            enemyHealth += -20;
+            enemyHealth += -5;
         }
         else if (enemy.tag == ("Enemy-3"))
         {
-            enemyHealth += -15;
+            enemyHealth += -3;
         }
         
         playerScore += 25;
@@ -67,6 +68,7 @@ public class Game_Control : MonoBehaviour
         if (enemyHealth < 0)
         {
             enemyHealthText.text = "Enemy Health : " + 0;
+            //Time.timeScale = 0;
         }
 
             scoreText.text = "Score :" + playerScore.ToString();
@@ -81,9 +83,15 @@ public class Game_Control : MonoBehaviour
         gameOverText.enabled = true; // Display the Game Over! Text
         Time.timeScale = 0; // This freezes the game
     }
+
+    public void NextStage()
+    {
+        SceneManager.LoadScene(1);
+    }
     public void LoadNextLevel()
     {
         
+
 
         int nextSceneIndex = (SceneManager.GetActiveScene().buildIndex + 1)
             % SceneManager.sceneCountInBuildSettings;

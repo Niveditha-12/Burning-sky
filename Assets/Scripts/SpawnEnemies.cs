@@ -8,7 +8,7 @@ public class SpawnEnemies : MonoBehaviour
     public Game_Control game_Control;
     public List<GameObject> EnemyList = new List<GameObject>();
     public float startWait = 1.0f;
-    public float waveInterval = 3.0f;
+    public float waveInterval = 2.0f;
     public float spawnInterval = 1f;
     public int enemiesPerWave = 2;
     public GameObject enemyType1;
@@ -33,7 +33,7 @@ public class SpawnEnemies : MonoBehaviour
         
         GameObject myObj = Instantiate(EnemyList[0]) as GameObject;
         myObj.transform.parent = this.transform;
-        myObj.transform.position = new Vector3(0, this.transform.position.y, 0);
+        myObj.transform.position = new Vector3(12f, 4.4f, 0);
         game_Control.enemyHealth = 100;
         game_Control.enemyHealthText.text = "Enemy Health : " + game_Control.enemyHealth.ToString();
     }
@@ -79,6 +79,11 @@ public class SpawnEnemies : MonoBehaviour
             print(EnemyList.Count);
             EnemyList.RemoveAt(0);
             SpawnEnemy();
+        }
+        else
+        {
+            Time.timeScale = 0;
+            Game_Control.SharedInstance.NextStageButton.SetActive(true);
         }
         
         

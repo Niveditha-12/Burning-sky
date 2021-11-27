@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 6678614036331277871}
   - component: {fileID: 6493627100887753311}
   - component: {fileID: 533185183910365492}
+  - component: {fileID: 95106648836613880}
   m_Layer: 0
-  m_Name: Enemy-2
+  m_Name: Enemy-4
   m_TagString: Enemy-2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,6 +156,25 @@ MonoBehaviour:
   spawnBullet: {fileID: 3609209301341955179}
   game_Control: {fileID: 0}
   enemyHealth: {fileID: 0}
+--- !u!95 &95106648836613880
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3609209301102305578}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4aec0074bcfefa04ca0316e66959b61c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3609209301341955189
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,3 +223,4 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4155374841716104722, guid: 6c55064e778010047af61df37ef61b08,
     type: 3}
   reloadTime: 2
+  enemiesPerWave: 5

@@ -5,15 +5,21 @@ using UnityEngine.UI;
 
 public class EnemyControl : MonoBehaviour
 {
+    public static EnemyControl SharedInstance;
     public GameObject player;
     Transform target;
     public Bullet_Spawn spawnBullet;
     public Game_Control game_Control;
     public Text enemyHealth;
+    public Animation anim;
 
-
+    private void Awake()
+    {
+        SharedInstance = this;
+    }
     void Start()
     {
+        anim = GetComponent<Animation>();
         game_Control = FindObjectOfType<Game_Control>();
         player = GameObject.Find("Player");
         target = player.transform;
@@ -24,6 +30,7 @@ public class EnemyControl : MonoBehaviour
     
     void Update()
     {
+        
         //rotate towards player.
         var offset = 90f; 
         Vector2 direction = target.position - transform.position; //get the direction of the target.

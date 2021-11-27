@@ -8,7 +8,7 @@ public class Player_Control : MonoBehaviour
     public float playerSpeed = 10f;
     public Game_Control gameController;
     public GameObject bulletPrefab;
-    private float elapsedTime = 0;
+    //private float elapsedTime = 0;
     public bool powerShield = false;
     bool powerShoot = false;
     public GameObject shield;

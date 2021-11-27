@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 6678614036331277871}
   - component: {fileID: 6493627100887753311}
   - component: {fileID: 533185183910365492}
+  - component: {fileID: 95728679796838730}
   m_Layer: 0
-  m_Name: Enemy-1
-  m_TagString: Enemy-1
+  m_Name: Enemy-3
+  m_TagString: Enemy-2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a507e4d319138d44482579bc5610a9e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f7eb00cb3ec9bab45b85d561558c4250, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +101,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.42, y: 0.34}
+    oldSize: {x: 0.4, y: 0.7}
     newSize: {x: 0.3, y: 0.19}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -155,6 +156,26 @@ MonoBehaviour:
   spawnBullet: {fileID: 3609209301341955179}
   game_Control: {fileID: 0}
   enemyHealth: {fileID: 0}
+  anim: {fileID: 0}
+--- !u!95 &95728679796838730
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3609209301102305578}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4aec0074bcfefa04ca0316e66959b61c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3609209301341955189
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,3 +224,4 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4155374841716104722, guid: 6c55064e778010047af61df37ef61b08,
     type: 3}
   reloadTime: 2
+  enemiesPerWave: 5

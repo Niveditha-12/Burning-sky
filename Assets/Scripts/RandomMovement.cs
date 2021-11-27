@@ -56,13 +56,14 @@ public class RandomMovement : MonoBehaviour
 		if (other.gameObject.tag == "PlayerBullet")
 		{	
 			gameObject.SetActive(false);
+			Game_Control.SharedInstance.HealthScore();
 
 		}
 		if (other.gameObject.tag == "Player")
 		{
 			if(Player_Control.SharedInstance.powerShield==false)
             {
-				Game_Control.SharedInstance.HealthScore();
+				Game_Control.SharedInstance.playerScore += 10;
 			}
 			
 			
