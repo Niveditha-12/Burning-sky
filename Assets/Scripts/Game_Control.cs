@@ -90,15 +90,15 @@ public class Game_Control : MonoBehaviour
     }
     public void LoadNextLevel()
     {
-        
 
 
-        int nextSceneIndex = (SceneManager.GetActiveScene().buildIndex + 1)
+        SceneManager.LoadScene(1);
+       /* int nextSceneIndex = (SceneManager.GetActiveScene().buildIndex + 1)
             % SceneManager.sceneCountInBuildSettings;
         if (nextSceneIndex >= 0 && nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(nextSceneIndex);
-        }
+        }*/
     }
 
 }
