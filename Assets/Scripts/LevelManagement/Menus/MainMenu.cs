@@ -16,7 +16,8 @@ namespace LevelManagement
             {
                 game_Control.LoadNextLevel();
             }
-
+            game_Control.LoadPreferences();
+            print("saved");
             GameMenu.open();
         }
         public void OnSettingsPressed() // invoking open menu function using MenuManger instance

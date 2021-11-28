@@ -420,6 +420,7 @@ MonoBehaviour:
   spawnEnemy: {fileID: 0}
   NextStageButton: {fileID: 0}
   HighScore: 0
+  PresentScore: 0
 --- !u!223 &1607432238
 Canvas:
   m_ObjectHideFlags: 0

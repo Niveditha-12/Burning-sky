@@ -27,13 +27,18 @@ namespace LevelManagement
 
         public void OnMainMenuPressed()
         {
-            Time.timeScale = 1;
-            //SceneManager.LoadScene(0);//load main menu
-            if(MenuManager.Instance != null && MainMenu.Instance != null)
-            {
-                MenuManager.Instance.OpenMenu(MainMenu.Instance); //open menu dereived from menu manager
-            }
             game_Control.SaveScore();
+            
+            
+            print("MainMenu");
+            
+            if (MenuManager.Instance != null && MainMenu.Instance != null)
+            {
+                MenuManager.Instance.OpenMenu(MainMenu.Instance);
+                Time.timeScale = 0;//open menu dereived from menu manager
+            }
+            
+            
 
         }
         public void OnQuitPressed()

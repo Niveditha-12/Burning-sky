@@ -16,12 +16,14 @@ public class Game_Control : MonoBehaviour
     public SpawnEnemies spawnEnemy;
     public GameObject NextStageButton;
     public int HighScore;
+    public int PresentScore;
     
 
 
 
     private void Awake()
     {
+        HighScore = PlayerPrefs.GetInt("HighScore");
         SharedInstance = this;
         
     }
@@ -30,7 +32,22 @@ public class Game_Control : MonoBehaviour
         
         Time.timeScale = 1;
     }
-    
+
+    void Update()
+    {
+        if (playerScore > HighScore)
+        {
+            HighScore = playerScore;
+            if (highScoreText != null)
+            {
+               
+                highScoreText.text = "HIGH SCORE :" + HighScore.ToString();
+            }
+
+            PlayerPrefs.SetInt("HighScore", HighScore);
+            PlayerPrefs.Save();
+        }
+    }
     public void FindEnemy()
     {
         enemy = FindObjectOfType<EnemyControl>();
@@ -100,24 +117,44 @@ public class Game_Control : MonoBehaviour
     {
         SaveScore();
         SceneManager.LoadScene(1);
+        Time.timeScale = 1;
+        PresentScore = PlayerPrefs.GetInt("PresentScore");
+        scoreText.text = "Score:" + PresentScore.ToString();
     }
     public void LoadNextLevel()
     {
 
         SceneManager.LoadScene(1);
-       
+        Time.timeScale = 1;
+        
     }
     public void SaveScore()
     {
-        PlayerPrefs.SetInt("HighScore", playerScore);
-        PlayerPrefs.Save();
+
         
+        /*print(PlayerPrefs.GetInt("HighScore"));
+        if (PlayerPrefs.GetInt("HighScore") < playerScore)
+        {
+            
+            PlayerPrefs.SetInt("HighScore", playerScore);
+            
+           
+        }
+        PlayerPrefs.Save();
+        //PlayerPrefs.SetInt("HighScore", playerScore);*/
+        
+
 
     }
     public void LoadPreferences() // load this data when game starts.
     {
 
         HighScore = PlayerPrefs.GetInt("HighScore");
-        highScoreText.text = "HIGH SCORE :" + HighScore.ToString();
+        if(highScoreText !=null)
+        {
+            print("HS:" + HighScore);
+            highScoreText.text = "HIGH SCORE :" + HighScore.ToString();
+        }
+        
     }
 }

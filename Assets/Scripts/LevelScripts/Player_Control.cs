@@ -50,7 +50,7 @@ public class Player_Control : MonoBehaviour
             
             GameObject bullet = Bullet_Pool.SharedInstance.GetPooledObject();
             
-            if (bullet != null)
+            if (bullet != null) //fire few bullets at a time. 
             {      
                       
                    float j = -1f + i;

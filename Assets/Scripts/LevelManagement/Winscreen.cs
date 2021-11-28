@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace LevelManagement
 {
     public class Winscreen : Menu<Winscreen>
     {
+        private Game_Control game_Control;
         public void OnNextLevelPressed()
         {
             base.OnBackPressed();
-
+            game_Control.NextStage();
+            
         }
          public void OnRestartPressed()
         {
