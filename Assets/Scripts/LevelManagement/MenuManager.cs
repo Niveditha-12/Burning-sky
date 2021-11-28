@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace LevelManagement
 {
@@ -11,7 +12,9 @@ namespace LevelManagement
         public ScoreMenu ScorePrefab;
         public GameMenu gameMenuPrefab;
         public PauseMenu pauseMenuPrefab;
-
+        public Winscreen winScreenPrefab;
+        AudioSource MyAudioSource;
+        Slider slider;
         [SerializeField]
         private Transform menuParent; //To group menus under one parent
 
@@ -34,6 +37,8 @@ namespace LevelManagement
              //this component
             InitializeMenus();
             DontDestroyOnLoad(gameObject);
+            MyAudioSource = GetComponent<AudioSource>();
+            MyAudioSource.volume = SettingsMenu.Instance.volumeSlider.value;
         }
 
         private void OnDestroy()
@@ -42,6 +47,15 @@ namespace LevelManagement
             {
                 instance = null;
             }
+        }
+
+        public void SetVolume(float volume)
+        {
+            if(MyAudioSource != null)
+            {
+                MyAudioSource.volume = volume;
+            }
+            
         }
         private void InitializeMenus() // To instantiate prefabs when level loads
         {
@@ -52,7 +66,7 @@ namespace LevelManagement
             }
             DontDestroyOnLoad(menuParent.gameObject);
 
-            Menu[] menuPrefabs = { mainMenuPrefab, settingsScreenPrefab, ScorePrefab, gameMenuPrefab, pauseMenuPrefab };
+            Menu[] menuPrefabs = { mainMenuPrefab, settingsScreenPrefab, ScorePrefab, gameMenuPrefab, pauseMenuPrefab, winScreenPrefab };
             foreach (Menu prefab in menuPrefabs)
             {
                 if (prefab != null) // if prefab is not null, then instantiate and store in local variable as child of menuParent

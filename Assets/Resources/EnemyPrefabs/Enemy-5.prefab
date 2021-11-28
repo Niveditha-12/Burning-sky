@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6493627100887753311}
   - component: {fileID: 533185183910365492}
   - component: {fileID: 2388821245529275142}
-  - component: {fileID: 95691007796748788}
+  - component: {fileID: 2026591953}
   m_Layer: 0
   m_Name: Enemy-5
   m_TagString: Enemy-3
@@ -121,6 +121,7 @@ MonoBehaviour:
   spawnBullet: {fileID: 3609209301341955179}
   game_Control: {fileID: 0}
   enemyHealth: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!60 &2388821245529275142
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -189,7 +190,7 @@ PolygonCollider2D:
       - {x: 0.26999998, y: -0.19}
       - {x: 0.16, y: -0.29999998}
       - {x: 0.14999999, y: -0.29999998}
---- !u!95 &95691007796748788
+--- !u!95 &2026591953
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -199,7 +200,7 @@ Animator:
   m_GameObject: {fileID: 3609209301102305578}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4aec0074bcfefa04ca0316e66959b61c, type: 2}
+  m_Controller: {fileID: 9100000, guid: ee1ed99be0e22b047aa8f647853c3ad4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

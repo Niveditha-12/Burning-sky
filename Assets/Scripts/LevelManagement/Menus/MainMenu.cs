@@ -17,27 +17,18 @@ namespace LevelManagement
                 game_Control.LoadNextLevel();
             }
 
-            if (MenuManager.Instance != null && GameMenu.Instance != null)
-            {
-                MenuManager.Instance.OpenMenu(GameMenu.Instance); //open pause button 
-            }
+            GameMenu.open();
         }
         public void OnSettingsPressed() // invoking open menu function using MenuManger instance
         {
-            
-            if (MenuManager.Instance != null && SettingsMenu.Instance != null)//Making use of singleton concept here.
-            {
-                MenuManager.Instance.OpenMenu(SettingsMenu.Instance);
-            }
+
+            SettingsMenu.open();
 
         }
 
         public void OnScorePressed()
         {
-            if (MenuManager.Instance != null && ScoreMenu.Instance != null) //Making use of singleton concept here.using score menu instance created
-            {
-                MenuManager.Instance.OpenMenu(ScoreMenu.Instance);
-            }
+            ScoreMenu.open();
 
         }
 

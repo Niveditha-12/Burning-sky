@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6678614036331277871}
   - component: {fileID: 6493627100887753311}
   - component: {fileID: 533185183910365492}
-  - component: {fileID: 95106648836613880}
+  - component: {fileID: 637185750}
   m_Layer: 0
   m_Name: Enemy-4
   m_TagString: Enemy-2
@@ -156,7 +156,8 @@ MonoBehaviour:
   spawnBullet: {fileID: 3609209301341955179}
   game_Control: {fileID: 0}
   enemyHealth: {fileID: 0}
---- !u!95 &95106648836613880
+  anim: {fileID: 0}
+--- !u!95 &637185750
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -166,7 +167,7 @@ Animator:
   m_GameObject: {fileID: 3609209301102305578}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4aec0074bcfefa04ca0316e66959b61c, type: 2}
+  m_Controller: {fileID: 9100000, guid: ee1ed99be0e22b047aa8f647853c3ad4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

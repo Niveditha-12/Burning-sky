@@ -27,6 +27,17 @@ namespace LevelManagement
         {
             instance = null;
         }
+
+        public static void open()
+        {
+            if(MenuManager.Instance  != null && instance != null)
+            {
+                MenuManager.Instance.OpenMenu(Instance);
+            }
+                    
+
+            
+        }
     }
     [RequireComponent(typeof(Canvas))]
     public abstract class Menu : MonoBehaviour
