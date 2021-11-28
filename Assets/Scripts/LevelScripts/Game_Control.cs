@@ -17,14 +17,19 @@ public class Game_Control : MonoBehaviour
     public GameObject NextStageButton;
     public int HighScore;
     public int PresentScore;
-    
+    public int Level;
 
 
 
     private void Awake()
     {
+        //PlayerPrefs.SetInt("HighScore", 0);
         HighScore = PlayerPrefs.GetInt("HighScore");
         SharedInstance = this;
+        if(Level>1)
+        {
+            scoreText.text = "Score:" + PresentScore.ToString();
+        }
         
     }
     private void Start()
@@ -35,6 +40,7 @@ public class Game_Control : MonoBehaviour
 
     void Update()
     {
+        PlayerPrefs.SetInt("PresentScore", playerScore);
         if (playerScore > HighScore)
         {
             HighScore = playerScore;
@@ -45,8 +51,10 @@ public class Game_Control : MonoBehaviour
             }
 
             PlayerPrefs.SetInt("HighScore", HighScore);
-            PlayerPrefs.Save();
+            
+            //PlayerPrefs.Save();
         }
+        PlayerPrefs.Save();
     }
     public void FindEnemy()
     {
@@ -115,11 +123,9 @@ public class Game_Control : MonoBehaviour
 
     public void NextStage()
     {
-        SaveScore();
-        SceneManager.LoadScene(1);
         Time.timeScale = 1;
-        PresentScore = PlayerPrefs.GetInt("PresentScore");
-        scoreText.text = "Score:" + PresentScore.ToString();
+        spawnEnemy.SpawnEnemy();
+        
     }
     public void LoadNextLevel()
     {
@@ -152,7 +158,7 @@ public class Game_Control : MonoBehaviour
         HighScore = PlayerPrefs.GetInt("HighScore");
         if(highScoreText !=null)
         {
-            print("HS:" + HighScore);
+            
             highScoreText.text = "HIGH SCORE :" + HighScore.ToString();
         }
         

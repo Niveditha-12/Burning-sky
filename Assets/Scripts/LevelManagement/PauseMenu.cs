@@ -29,7 +29,6 @@ namespace LevelManagement
         {
             game_Control.SaveScore();
             
-            
             print("MainMenu");
             
             if (MenuManager.Instance != null && MainMenu.Instance != null)

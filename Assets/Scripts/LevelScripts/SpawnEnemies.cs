@@ -21,19 +21,23 @@ using LevelManagement;
         }
         void Start() // having enemies in a list to spawn them when needed.
         {
-            Object[] subListPrefab = Resources.LoadAll("EnemyPrefabs", typeof(GameObject));
-            // get all enemy prefabs in an array.
-            foreach (GameObject x in subListPrefab)
-            {
-                GameObject lo = (GameObject)x;
-                EnemyList.Add(lo);
-            }
 
+            AddEnemyToList();
             SpawnEnemy();
             StartCoroutine(SpawnEnemyWaves());
 
         }
 
+        private void AddEnemyToList()
+        {
+            Object[] subListPrefab = Resources.LoadAll("EnemyPrefabs", typeof(GameObject));
+                                                                                              // get all enemy prefabs in an array.
+            foreach (GameObject x in subListPrefab)
+            {
+                GameObject lo = (GameObject)x;
+                EnemyList.Add(lo);
+             }
+        }
         public void SpawnEnemy() //spawn enemy at desired position as child.
         {
 
@@ -90,7 +94,9 @@ using LevelManagement;
             {
 
                 Time.timeScale = 0;
-            Winscreen.open();
+                Winscreen.open();
+            EnemyList.Clear();
+                AddEnemyToList();
             }
 
 

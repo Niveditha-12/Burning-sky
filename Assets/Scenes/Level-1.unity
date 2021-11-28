@@ -761,7 +761,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 291, y: 209}
+  m_AnchoredPosition: {x: 265.9997, y: 209}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &628344106
@@ -1101,8 +1101,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 305.5, y: 175.3}
-  m_SizeDelta: {x: 188.99792, y: 32.56591}
+  m_AnchoredPosition: {x: 294.1, y: 176.51}
+  m_SizeDelta: {x: 211.71552, y: 34.982933}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &902802042
 MonoBehaviour:
@@ -6206,6 +6206,8 @@ MonoBehaviour:
   spawnEnemy: {fileID: 2070312594}
   NextStageButton: {fileID: 407272756}
   HighScore: 0
+  PresentScore: 0
+  Level: 0
 --- !u!4 &1193844723
 Transform:
   m_ObjectHideFlags: 0
