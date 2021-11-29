@@ -28,7 +28,7 @@ public class Game_Control : MonoBehaviour
         SharedInstance = this;
         if(Level>1)
         {
-            scoreText.text = "Score:" + PresentScore.ToString();
+            scoreText.text = "Score:" + PresentScore.ToString(); // if player has reached different level, continue with same score.
         }
         
     }
@@ -38,7 +38,7 @@ public class Game_Control : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    void Update()
+    void Update() // save the high score, if player scores more than previous score.
     {
         PlayerPrefs.SetInt("PresentScore", playerScore);
         if (playerScore > HighScore)
@@ -65,7 +65,6 @@ public class Game_Control : MonoBehaviour
         playerScore++;
         scoreText.text = "Score:" + playerScore.ToString();
         
-        //return playerScore;
     }
 
     public void HealthScore()
@@ -94,7 +93,7 @@ public class Game_Control : MonoBehaviour
             enemyHealth += -3;
         }
         
-        playerScore += 25;
+        playerScore += 10;
         if(enemyHealth >=0)
         {
             enemyHealthText.text = "Enemy Health : " + enemyHealth.ToString();

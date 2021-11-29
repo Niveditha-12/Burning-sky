@@ -16,9 +16,13 @@ public class Player_BulletMover : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void  Update()
     {
-        rigidBody.velocity = new Vector2(0, bullet_Speed);
+        
+        //rigidBody.AddForce(transform.up * bullet_Speed);
     }
-   
+    private void LateUpdate()
+    {
+        rigidBody.AddForce(transform.up * bullet_Speed);
+    }
 }

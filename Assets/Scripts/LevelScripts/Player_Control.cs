@@ -8,7 +8,7 @@ public class Player_Control : MonoBehaviour
     public float playerSpeed = 10f;
     public Game_Control gameController;
     public GameObject bulletPrefab;
-    //private float elapsedTime = 0;
+    
     public bool powerShield = false;
     bool powerShoot = false;
     public GameObject shield;
@@ -26,13 +26,8 @@ public class Player_Control : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
-
-        
-        PlayerMovement();
-        
-        
+    {             
+        PlayerMovement();            
     }
     public void Spawn()
     {
@@ -44,7 +39,7 @@ public class Player_Control : MonoBehaviour
         {
             no_of_bullets = 5;
         }
-
+        int k = 0;
         for (int i = 0; i < no_of_bullets; i++)
             {
             
@@ -52,19 +47,23 @@ public class Player_Control : MonoBehaviour
             
             if (bullet != null) //fire few bullets at a time. 
             {      
-                      
-                   float j = -1f + i;
+                    
+                    
+                    //float j = -1f + i;
+                    int angle = -15 + k;
+                    k += 15;
+                    
+                    bullet.transform.rotation = Quaternion.Euler(Vector3.forward * (angle));
                     Vector3 spawnPos = transform.position;
-                    spawnPos += new Vector3(j, 1.2f, 0);
+                    spawnPos += new Vector3(0, 1.2f, 0);               
                     bullet.transform.position = spawnPos;
+                    
                     bullet.SetActive(true);
-                    Rigidbody2D rigidBody = bullet.GetComponent<Rigidbody2D>();
-                    rigidBody.velocity = new Vector2(0, bullet_Speed);    
-                
             }
 
             
         }
+         
         Invoke("Spawn", 1f);
 
 

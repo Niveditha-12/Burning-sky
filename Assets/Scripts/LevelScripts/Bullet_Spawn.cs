@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet_Spawn : MonoBehaviour
+public class Bullet_Spawn : MonoBehaviour   // bullets from the main enemy
 {
     public float minSpawnDelay = .5f;
     public float maxSpawnDelay = 1f;
     public GameObject bulletPrefab;
     private float elapsedTime = 0;
     
-    public float reloadTime = 10f;
-    public int enemiesPerWave = 5;
+    //public float reloadTime = 10f;
+    
 
     void Start()
     {
@@ -43,8 +43,5 @@ public class Bullet_Spawn : MonoBehaviour
           }
 
       }
-    void Update()
-    {
-       
-    }
+   
 }

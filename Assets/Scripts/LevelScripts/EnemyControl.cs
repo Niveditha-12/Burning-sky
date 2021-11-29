@@ -11,7 +11,7 @@ public class EnemyControl : MonoBehaviour
     public Bullet_Spawn spawnBullet;
     public Game_Control game_Control;
     public Text enemyHealth;
-    public Animation anim;
+    public Animator anim;
 
     private void Awake()
     {
@@ -19,7 +19,7 @@ public class EnemyControl : MonoBehaviour
     }
     void Start()
     {
-        anim = GetComponent<Animation>();
+        anim = GetComponent<Animator>();
         game_Control = FindObjectOfType<Game_Control>();
         player = GameObject.Find("Player");
         target = player.transform;
@@ -30,7 +30,14 @@ public class EnemyControl : MonoBehaviour
     
     void Update()
     {
-        
+        if (Game_Control.SharedInstance.Level > 1)
+        {
+            anim.SetBool("Stop", true);
+        }
+        else
+        {
+            anim.SetBool("Stop", false);
+        }
         //rotate towards player.
         var offset = 90f; 
         Vector2 direction = target.position - transform.position; //get the direction of the target.

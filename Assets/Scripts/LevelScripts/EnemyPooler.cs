@@ -8,7 +8,7 @@ public class EnemyPooler : MonoBehaviour
     public List<GameObject> pooledObjects;
    
     public GameObject objectToPool;
-    public int amountToPool;
+    public int amountToPool =3;
     void Awake()
     {
         SharedInstance = this;
@@ -26,14 +26,12 @@ public class EnemyPooler : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public GameObject GetPooledObject()
     {
-       
+        if(Game_Control.SharedInstance.Level == 3) //on level 4, increase the number of obstacles.
+        {
+            amountToPool = 5;
+        }
         for (int i = 0; i < amountToPool; i++)
         {
             

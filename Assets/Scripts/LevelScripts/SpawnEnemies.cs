@@ -11,7 +11,7 @@ using LevelManagement;
         public float startWait = 1.0f;
         public float waveInterval = 2.0f;
         public float spawnInterval = 1f;
-        public int enemiesPerWave = 2;
+        private int enemiesPerWave = 3;
         public GameObject enemyType1;
         //Winscreen win;
 
@@ -50,36 +50,44 @@ using LevelManagement;
 
         IEnumerator SpawnEnemyWaves()// spawn obstacles.
         {
+
+        
             yield return new WaitForSeconds(startWait);
             while (true)
             {
                 float waveType = Random.Range(0.0f, 10.0f);
-                for (int i = 0; i < enemiesPerWave; i++)
+                for (int i = 0; i < enemiesPerWave; i++) //start spawning them from random positions within screen.
                 {
                     Vector3 topLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, Camera.main.pixelHeight + 2, 0));
                     Vector3 topRight = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight + 2, 0));
                     Vector3 spawnPosition = new Vector3(Random.Range(topLeft.x, topRight.x), topLeft.y, 0);
                     Quaternion spawnRotation = Quaternion.Euler(0, 0, 180);
-                    if (waveType >= 5.0f)
+                    if (waveType >= 5.0f) //spawn at random intervals.
                     {
                         GameObject bullet = EnemyPooler.SharedInstance.GetPooledObject();
                         if (bullet != null)
                         {
-                            bullet.transform.position = bullet.transform.position = new Vector3(0, 1.2f, 0);
+                            int rRandomPosx = Random.Range(3, -3);
+                            bullet.transform.position = bullet.transform.position = new Vector3(rRandomPosx, 8f, 0);
+                            //bullet.transform.position = bullet.transform.position = spawnPosition;
                             bullet.transform.rotation = this.transform.rotation;
                             bullet.SetActive(true);
+                        
                         }
                     }
 
-                    yield return new WaitForSeconds(spawnInterval);
+                    yield return new WaitForSeconds(spawnInterval);//spawn each obstacle each second.
                 }
-                yield return new WaitForSeconds(waveInterval);
+                yield return new WaitForSeconds(waveInterval); //repeat the pattern every 5 seconds.
             }
         }
 
         void Update()
         {
-
+            if(Game_Control.SharedInstance.Level > 2)
+            {
+            enemiesPerWave = 5;
+            }
         }
         public void manageList() //if list is not empty then, remove enemy1 from list and spawn bigger enemy..
         {
@@ -90,12 +98,12 @@ using LevelManagement;
                 EnemyList.RemoveAt(0);
                 SpawnEnemy();
             }
-            else // when player destroys all enemies load winning screen
+            else // when player destroys all enemies load winning screen and add enemies to the list for next level.
             {
 
                 Time.timeScale = 0;
                 Winscreen.open();
-            EnemyList.Clear();
+                EnemyList.Clear();
                 AddEnemyToList();
             }
 

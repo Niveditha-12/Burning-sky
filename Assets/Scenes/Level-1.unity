@@ -476,7 +476,7 @@ Transform:
   - {fileID: 2085047209}
   - {fileID: 1529213262}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &407272756
 GameObject:
@@ -5999,7 +5999,7 @@ Transform:
   m_Children:
   - {fileID: 520976354}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1110585454
 SpriteRenderer:
@@ -6220,7 +6220,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1193844724
 MonoBehaviour:
@@ -6238,7 +6238,6 @@ MonoBehaviour:
     type: 3}
   powerShootPrefab: {fileID: 1750600609417348046, guid: bf72d644546576b4ca00a76b5040ca66,
     type: 3}
-  spawnCycle: 15
 --- !u!114 &1193844725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6600,7 +6599,7 @@ Transform:
   m_Children:
   - {fileID: 551176306}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1922619741
 GameObject:
@@ -6733,7 +6732,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2070312594
 MonoBehaviour:
