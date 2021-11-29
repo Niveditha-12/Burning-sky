@@ -22,14 +22,14 @@ namespace LevelManagement
             Time.timeScale = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             base.OnBackPressed();
-            game_Control.SaveScore();
+            
         }
 
         public void OnMainMenuPressed()
         {
-            game_Control.SaveScore();
+           
             
-            print("MainMenu");
+            
             
             if (MenuManager.Instance != null && MainMenu.Instance != null)
             {
@@ -43,7 +43,7 @@ namespace LevelManagement
         public void OnQuitPressed()
         {
             Application.Quit();
-            game_Control.SaveScore();
+            
             
         }
     }

@@ -20,7 +20,7 @@ public class Bullet_Mover : MonoBehaviour
         //fire in the direction of player
         Vector2 direction = target.transform.position - transform.position;
         rigidBody.AddForce(direction * bullet_Speed);
-        //rigidBody.AddForce(transform.up * bullet_Speed);
+        
     }
     
 }

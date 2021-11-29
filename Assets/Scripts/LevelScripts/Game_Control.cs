@@ -18,6 +18,7 @@ public class Game_Control : MonoBehaviour
     public int HighScore;
     public int PresentScore;
     public int Level;
+    public AudioSource audioSource;
 
 
 
@@ -34,7 +35,7 @@ public class Game_Control : MonoBehaviour
     }
     private void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
         Time.timeScale = 1;
     }
 
@@ -107,6 +108,7 @@ public class Game_Control : MonoBehaviour
             scoreText.text = "Score :" + playerScore.ToString();
         if (enemyHealth<=0)
         {
+            
             enemy.DestroEnemy();
             spawnEnemy.manageList(); //remove enemy1 from list and spawn bigger enemy.
             
@@ -114,7 +116,7 @@ public class Game_Control : MonoBehaviour
     }
     public void PlayerDied()
     {
-        SaveScore();
+        
         gameOverText.enabled = true; // Display the Game Over! Text
         Time.timeScale = 0; // This freezes the game
         
@@ -133,24 +135,7 @@ public class Game_Control : MonoBehaviour
         Time.timeScale = 1;
         
     }
-    public void SaveScore()
-    {
-
-        
-        /*print(PlayerPrefs.GetInt("HighScore"));
-        if (PlayerPrefs.GetInt("HighScore") < playerScore)
-        {
-            
-            PlayerPrefs.SetInt("HighScore", playerScore);
-            
-           
-        }
-        PlayerPrefs.Save();
-        //PlayerPrefs.SetInt("HighScore", playerScore);*/
-        
-
-
-    }
+    
     public void LoadPreferences() // load this data when game starts.
     {
 

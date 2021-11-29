@@ -8,12 +8,13 @@ public class Player_Control : MonoBehaviour
     public float playerSpeed = 10f;
     public Game_Control gameController;
     public GameObject bulletPrefab;
-    
+    private AudioSource muAudio;
     public bool powerShield = false;
     bool powerShoot = false;
     public GameObject shield;
     public int no_of_bullets;
     private float bullet_Speed = 3f;
+    Vector3 spawnPos;
 
     private void Awake()
     {
@@ -21,16 +22,20 @@ public class Player_Control : MonoBehaviour
     }
     void Start()
     {
+        muAudio = GetComponent<AudioSource>();
         gameController.LoadPreferences();
     }
 
     // Update is called once per frame
     void Update()
     {             
-        PlayerMovement();            
+        PlayerMovement();
+        spawnPos = transform.position;
+        spawnPos += new Vector3(0, 1.2f, 0);
     }
     public void Spawn()
     {
+        Game_Control.SharedInstance.audioSource.Play();
         if (!powerShoot)
         {
             no_of_bullets = 3;
@@ -47,24 +52,19 @@ public class Player_Control : MonoBehaviour
             
             if (bullet != null) //fire few bullets at a time. 
             {      
-                    
-                    
-                    //float j = -1f + i;
+                                     
                     int angle = -15 + k;
-                    k += 15;
-                    
-                    bullet.transform.rotation = Quaternion.Euler(Vector3.forward * (angle));
-                    Vector3 spawnPos = transform.position;
-                    spawnPos += new Vector3(0, 1.2f, 0);               
-                    bullet.transform.position = spawnPos;
-                    
+                    k += 15;                   
+                    bullet.transform.rotation = Quaternion.Euler(Vector3.forward * (angle));                                                                         
                     bullet.SetActive(true);
+                
+                bullet.transform.position = spawnPos;
             }
 
             
         }
          
-        Invoke("Spawn", 1f);
+        Invoke("Spawn", .8f);
 
 
 
@@ -111,28 +111,29 @@ public class Player_Control : MonoBehaviour
     }
     public void PowerupShieldCollected() // when powerup is collected, play particle system (shield) for 4 seconds and stop.
     {
+        muAudio.Play();
         powerShield = true;
         shield.SetActive(true);
         StartCoroutine(PowerUpTime());
         IEnumerator PowerUpTime()
         {
 
-            yield return new WaitForSeconds(10); // Time to continously fire bullets.
+            yield return new WaitForSeconds(8); // Time for booster
             shield.SetActive(false);
             powerShield = false;
         }
 
 
     }
-    public void PowerupShootCollected() // when powerup is collected, play particle system (shield) for 4 seconds and stop.
+    public void PowerupShootCollected() // when powerup is collected, play particle system (shield) for 8 seconds and stop.
     {
-
+        muAudio.Play();
          powerShoot = true;
         StartCoroutine(PowerUpTime());
         IEnumerator PowerUpTime()
         {
 
-            yield return new WaitForSeconds(10); // Time to continously fire bullets.
+            yield return new WaitForSeconds(8); // Time for booster
             shield.SetActive(false);
             powerShoot = false;
         }

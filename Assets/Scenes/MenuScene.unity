@@ -422,6 +422,7 @@ MonoBehaviour:
   HighScore: 0
   PresentScore: 0
   Level: 0
+  audioSource: {fileID: 0}
 --- !u!223 &1607432238
 Canvas:
   m_ObjectHideFlags: 0

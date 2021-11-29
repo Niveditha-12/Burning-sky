@@ -12,6 +12,8 @@ public class EnemyControl : MonoBehaviour
     public Game_Control game_Control;
     public Text enemyHealth;
     public Animator anim;
+    public ParticleSystem PS;
+    private AudioSource myAud;
 
     private void Awake()
     {
@@ -19,18 +21,19 @@ public class EnemyControl : MonoBehaviour
     }
     void Start()
     {
+        myAud = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         game_Control = FindObjectOfType<Game_Control>();
         player = GameObject.Find("Player");
         target = player.transform;
-
+        PS = GetComponentInChildren<ParticleSystem>();
         Fire();
     }
 
     
     void Update()
     {
-        if (Game_Control.SharedInstance.Level > 1)
+        if (Game_Control.SharedInstance.Level > 1) //move enemy when level 3 starts.
         {
             anim.SetBool("Stop", true);
         }
@@ -48,7 +51,7 @@ public class EnemyControl : MonoBehaviour
 
     void Fire()
     {
-        
+        myAud.Play();
         spawnBullet.Spawn();
         Invoke("Fire", 5f);// start firing every 5 seconds to the player
     }

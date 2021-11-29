@@ -7,7 +7,7 @@ public class Powerup : MonoBehaviour
     
     public GameObject powerShieldPrefab;
     public GameObject powerShootPrefab;
-    private float spawnCycle = 10f;
+    private float spawnCycle = 12f;
     private float timeElapsed = 0;
     private bool shieldPowerup = true;
     void Update()
@@ -19,6 +19,7 @@ public class Powerup : MonoBehaviour
            
             if (shieldPowerup) //instantiate power shoot prefab
             {
+                
                 SpawnObstacle(powerShieldPrefab);
             }
             else //instantiate power shield prefab
@@ -33,9 +34,11 @@ public class Powerup : MonoBehaviour
 
     public void SpawnObstacle(GameObject prefab) //spawns powerups at from the set random positions.
     {
+        
         GameObject temp;
         temp = Instantiate(prefab) as GameObject;
+        
         Vector3 pos = temp.transform.position;
-        temp.transform.position = new Vector3(Random.Range(-7, 7), pos.y, pos.z);
+        temp.transform.position = new Vector3(Random.Range(-7, 7), 5f, pos.z);
     }
 }

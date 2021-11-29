@@ -94,10 +94,10 @@ using LevelManagement;
 
             if (EnemyList.Count > 1)
             {
+            EnemyList.RemoveAt(0);
+            SpawnEnemy();
 
-                EnemyList.RemoveAt(0);
-                SpawnEnemy();
-            }
+        }
             else // when player destroys all enemies load winning screen and add enemies to the list for next level.
             {
 
@@ -110,5 +110,6 @@ using LevelManagement;
 
 
         }
-    }
+    
+}
 

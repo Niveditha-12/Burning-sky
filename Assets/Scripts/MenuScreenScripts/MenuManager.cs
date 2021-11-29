@@ -14,6 +14,7 @@ namespace LevelManagement
         public PauseMenu pauseMenuPrefab;
         public Winscreen winScreenPrefab;
         AudioSource MyAudioSource;
+        
         Slider slider;
         [SerializeField]
         private Transform menuParent; //To group menus under one parent

@@ -11,18 +11,19 @@ namespace LevelManagement
         
         public void OnPlayPressed()
         {
+            
             Game_Control game_Control = Object.FindObjectOfType<Game_Control>();
             if (game_Control != null)
             {
                 game_Control.LoadNextLevel();
             }
             game_Control.LoadPreferences();
-            print("saved");
+            
             GameMenu.open();
         }
         public void OnSettingsPressed() // invoking open menu function using MenuManger instance
         {
-
+          
             SettingsMenu.open();
 
         }
@@ -35,6 +36,7 @@ namespace LevelManagement
 
        public override void OnBackPressed() // using this already defined method from menu and can change how it works (abstract class concept)
         {
+            
             Application.Quit();
         }
     }

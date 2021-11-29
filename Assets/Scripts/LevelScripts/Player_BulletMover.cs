@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player_BulletMover : MonoBehaviour
 {
     [SerializeField]
-    private float bullet_Speed = 10f;
+    private float bullet_Speed = 40f;
     private Rigidbody2D rigidBody;
     public Game_Control game_Control;
     
@@ -18,11 +18,7 @@ public class Player_BulletMover : MonoBehaviour
     // Update is called once per frame
     void  Update()
     {
-        
-        //rigidBody.AddForce(transform.up * bullet_Speed);
-    }
-    private void LateUpdate()
-    {
-        rigidBody.AddForce(transform.up * bullet_Speed);
+
+        rigidBody.AddForce(transform.up * 40f);
     }
 }
