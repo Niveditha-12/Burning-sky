@@ -6,14 +6,14 @@ public class EnemyPooler : MonoBehaviour
 {
     public static EnemyPooler SharedInstance;
     public List<GameObject> pooledObjects;
-   
+
     public GameObject objectToPool;
-    public int amountToPool =3;
+    public int amountToPool = 3;
     void Awake()
     {
         SharedInstance = this;
     }
-    
+
     void Start()
     {
         pooledObjects = new List<GameObject>();
@@ -28,22 +28,22 @@ public class EnemyPooler : MonoBehaviour
 
     public GameObject GetPooledObject()
     {
-        if(Game_Control.SharedInstance.Level == 3) //on level 4, increase the number of obstacles.
+        if (Game_Control.SharedInstance.Level == 3) //on level 4, increase the number of obstacles.
         {
             amountToPool = 5;
         }
         for (int i = 0; i < amountToPool; i++)
         {
-            
+
             if (!pooledObjects[i].activeInHierarchy)
             {
-               
+
                 return pooledObjects[i];
-               
-                
+
+
             }
         }
-        
+
         return null;
     }
 }

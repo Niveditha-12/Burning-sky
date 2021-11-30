@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 namespace LevelManagement
 {
 
 
     public class MainMenu : Menu<MainMenu> //becomes generic menu of type MainMenu
     {
-        
+        public Text HighScore;
         public void OnPlayPressed()
         {
             
@@ -34,10 +34,16 @@ namespace LevelManagement
 
         }
 
+       
+
        public override void OnBackPressed() // using this already defined method from menu and can change how it works (abstract class concept)
         {
             
             Application.Quit();
+        }
+        private void Update()
+        {
+            HighScore.text= "HIGH SCORE :" + Game_Control.SharedInstance.HighScore.ToString();
         }
     }
 }

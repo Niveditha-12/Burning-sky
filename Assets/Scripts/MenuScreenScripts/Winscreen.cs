@@ -13,9 +13,9 @@ namespace LevelManagement
             Game_Control.SharedInstance.Level++;
             base.OnBackPressed();
             Game_Control.SharedInstance.NextStage();
-            
+
         }
-         public void OnRestartPressed()
+        public void OnRestartPressed()
         {
             base.OnBackPressed();
         }
@@ -24,7 +24,7 @@ namespace LevelManagement
             MainMenu.open();
         }
 
-       public void ScreenOpen()
+        public void ScreenOpen()
         {
             Winscreen.open();
         }

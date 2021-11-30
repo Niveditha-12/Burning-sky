@@ -30,7 +30,7 @@ public class EnemyControl : MonoBehaviour
         Fire();
     }
 
-    
+
     void Update()
     {
         if (Game_Control.SharedInstance.Level > 1) //move enemy when level 3 starts.
@@ -42,7 +42,7 @@ public class EnemyControl : MonoBehaviour
             anim.SetBool("Stop", false);
         }
         //rotate towards player.
-        var offset = 90f; 
+        var offset = 90f;
         Vector2 direction = target.position - transform.position; //get the direction of the target.
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;// to set angle wrt to position of target.
         transform.rotation = Quaternion.Euler(Vector3.forward * (angle + offset));//rotate towards target with initial offset.
@@ -58,7 +58,7 @@ public class EnemyControl : MonoBehaviour
 
     public void DestroEnemy()
     {
-        
+
         Destroy(this.gameObject);
     }
     void OnTriggerEnter2D(Collider2D other)
@@ -70,7 +70,7 @@ public class EnemyControl : MonoBehaviour
 
             game_Control.EnemyHealth();
             other.gameObject.SetActive(false);
-            
+
         }
 
     }

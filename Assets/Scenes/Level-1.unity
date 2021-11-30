@@ -6164,6 +6164,7 @@ MonoBehaviour:
   powerShield: 0
   shield: {fileID: 520976353}
   no_of_bullets: 0
+  bulletAngle: 0
 --- !u!82 &1110585457
 AudioSource:
   m_ObjectHideFlags: 0

@@ -19,10 +19,10 @@ public class RandomMovement : MonoBehaviour
 		minX = -7f;
 		maxY = 3f;
 		minY = -3f;
-		if (Game_Control.SharedInstance.Level < 2)
+		/*if (Game_Control.SharedInstance.Level < 2)
 		{
 			SpawnObsatcle();
-		}
+		}*/
 	}
 
 	void Update()
@@ -32,7 +32,7 @@ public class RandomMovement : MonoBehaviour
 			SpawnObsatcle();
         }
 
-		if(Game_Control.SharedInstance.Level > 0) //if player hsa reached more than two levels then spawn obstacles at random positions with movement.
+		if(Game_Control.SharedInstance.Level > 0) //if player has reached more than two levels then spawn obstacles at random positions with movement.
         {
 			// change to a new random direction at random intervals
 			if (Time.time >= tChange)

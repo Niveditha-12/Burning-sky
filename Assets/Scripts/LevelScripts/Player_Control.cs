@@ -68,7 +68,7 @@ public class Player_Control : MonoBehaviour
             
         }
          
-        Invoke("Spawn", .8f);
+        Invoke("Spawn", .5f);
 
 
 

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Bullet_Spawn : MonoBehaviour   // bullets from the main enemy
 {
-    public float minSpawnDelay = .5f;
-    public float maxSpawnDelay = 1f;
+    
     public GameObject bulletPrefab;
     private float elapsedTime = 0;
     
