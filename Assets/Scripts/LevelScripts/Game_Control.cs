@@ -70,7 +70,7 @@ public class Game_Control : MonoBehaviour
 
     public void HealthScore()
     {
-        playerHealth--;
+        playerHealth--; 
         healthText.text = "Health : " + playerHealth.ToString();
         if(playerHealth==0)
         {
@@ -102,7 +102,10 @@ public class Game_Control : MonoBehaviour
         if (enemyHealth < 0)
         {
             enemyHealthText.text = "Enemy Health : " + 0;
-            //Time.timeScale = 0;
+            if(Level==4)
+            {
+                PlayerDied();
+            }
         }
 
             scoreText.text = "Score :" + playerScore.ToString();
@@ -117,9 +120,13 @@ public class Game_Control : MonoBehaviour
     public void PlayerDied()
     {
         
-        gameOverText.enabled = true; // Display the Game Over! Text
+        //gameOverText.enabled = true; // Display the Game Over! Text
         Time.timeScale = 0; // This freezes the game
-        
+        Time.timeScale = 0;
+        if (MenuManager.Instance != null && GameOverMenu.Instance != null)
+        {
+            MenuManager.Instance.OpenMenu(GameOverMenu.Instance);
+        }
     }
 
     public void NextStage()

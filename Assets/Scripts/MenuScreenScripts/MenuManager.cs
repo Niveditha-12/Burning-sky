@@ -13,6 +13,7 @@ namespace LevelManagement
         public GameMenu gameMenuPrefab;
         public PauseMenu pauseMenuPrefab;
         public Winscreen winScreenPrefab;
+        public GameOverMenu gameOverMenuPrefab;
         AudioSource MyAudioSource;
         
         Slider slider;
@@ -67,7 +68,7 @@ namespace LevelManagement
             }
             DontDestroyOnLoad(menuParent.gameObject);
 
-            Menu[] menuPrefabs = { mainMenuPrefab, settingsScreenPrefab, ScorePrefab, gameMenuPrefab, pauseMenuPrefab, winScreenPrefab };
+            Menu[] menuPrefabs = { mainMenuPrefab, settingsScreenPrefab, ScorePrefab, gameMenuPrefab, pauseMenuPrefab, winScreenPrefab,gameOverMenuPrefab };
             foreach (Menu prefab in menuPrefabs)
             {
                 if (prefab != null) // if prefab is not null, then instantiate and store in local variable as child of menuParent
