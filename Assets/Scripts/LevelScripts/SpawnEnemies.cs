@@ -69,7 +69,7 @@ using LevelManagement;
                         {
                             int rRandomPosx = Random.Range(3, -3);
                             bullet.transform.position = bullet.transform.position = new Vector3(rRandomPosx, 8f, 0);
-                            //bullet.transform.position = bullet.transform.position = spawnPosition;
+                            
                             bullet.transform.rotation = this.transform.rotation;
                             bullet.SetActive(true);
                         

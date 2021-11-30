@@ -15,9 +15,7 @@ public class Game_Control : MonoBehaviour
     public EnemyControl enemy;
     public SpawnEnemies spawnEnemy;
     public GameObject NextStageButton;
-    public int HighScore;
-    public int PresentScore;
-    public int Level;
+    public int HighScore, PresentScore, Level;
     public AudioSource audioSource;
 
 
@@ -25,7 +23,7 @@ public class Game_Control : MonoBehaviour
     private void Awake()
     {
         //PlayerPrefs.SetInt("HighScore", 0);
-        HighScore = PlayerPrefs.GetInt("HighScore");
+        HighScore = PlayerPrefs.GetInt("HighScore"); //get value from prefs to display recent high score.
         SharedInstance = this;
         if(Level>1)
         {
@@ -70,7 +68,7 @@ public class Game_Control : MonoBehaviour
 
     public void HealthScore()
     {
-        playerHealth--; 
+        playerHealth--;
         healthText.text = "Health : " + playerHealth.ToString();
         if(playerHealth==0)
         {
@@ -83,11 +81,11 @@ public class Game_Control : MonoBehaviour
         enemy = FindObjectOfType<EnemyControl>();//to call destroy function on enemy.
         if(enemy.tag==("Enemy-1"))
         {
-            enemyHealth += -8;
+            enemyHealth += -15;
         }
         else if(enemy.tag==("Enemy-2"))
         {
-            enemyHealth += -5;
+            enemyHealth += -8;
         }
         else if (enemy.tag == ("Enemy-3"))
         {

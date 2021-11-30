@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6241407684901191997}
   - component: {fileID: 6241407684901191996}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ScoreSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 6241407685589543430}
   - component: {fileID: 6241407685589543429}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: HighScoreSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 6241407685777742446}
   - component: {fileID: 6241407685777742445}
   m_Layer: 5
-  m_Name: Text
+  m_Name: HighScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 6241407686655478696}
   - component: {fileID: 6241407686655478695}
   m_Layer: 5
-  m_Name: Text
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -669,8 +669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f1377ed3330054ba6e618d9fa1393c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HighScore: {fileID: 6241407686655478695}
-  Score: {fileID: 6241407685777742445}
+  HighScore: {fileID: 6241407685777742445}
+  Score: {fileID: 6241407686655478695}
 --- !u!1 &7505646874171329502
 GameObject:
   m_ObjectHideFlags: 0

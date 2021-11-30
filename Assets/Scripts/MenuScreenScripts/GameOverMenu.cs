@@ -11,10 +11,14 @@ namespace LevelManagement
         public Text HighScore, Score;
         public void Start()
         {
-            HighScore.text = Game_Control.SharedInstance.HighScore.ToString();
-            Score.text = Game_Control.SharedInstance.PresentScore.ToString();
+
+            
         }
-        
+        private void Update()
+        {
+            HighScore.text = Game_Control.SharedInstance.HighScore.ToString();
+            Score.text = Game_Control.SharedInstance.playerScore.ToString();
+        }
 
         public void OnMainMenuPressed()
         {

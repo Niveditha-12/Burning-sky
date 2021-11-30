@@ -16,6 +16,8 @@ public class Player_Control : MonoBehaviour
     private float bullet_Speed = 3f;
     Vector3 spawnPos;
 
+    public int bulletAngle;
+
     private void Awake()
     {
         SharedInstance = this;
@@ -39,12 +41,14 @@ public class Player_Control : MonoBehaviour
         if (!powerShoot)
         {
             no_of_bullets = 3;
+            bulletAngle = 0;
         }
         if (powerShoot)
         {
             no_of_bullets = 5;
+            bulletAngle = -15;
         }
-        int k = 0;
+        
         for (int i = 0; i < no_of_bullets; i++)
             {
             
@@ -53,11 +57,11 @@ public class Player_Control : MonoBehaviour
             if (bullet != null) //fire few bullets at a time. 
             {      
                                      
-                    int angle = -15 + k;
-                    k += 15;                   
+                    int angle = -15 + bulletAngle;
+                    bulletAngle += 15;                   
                     bullet.transform.rotation = Quaternion.Euler(Vector3.forward * (angle));                                                                         
                     bullet.SetActive(true);
-                
+                bullet.transform.parent = this.transform;
                 bullet.transform.position = spawnPos;
             }
 
