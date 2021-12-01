@@ -105,7 +105,7 @@ public class Game_Control : MonoBehaviour
         }
         else if (enemy.tag == ("Enemy-3"))
         {
-            enemyHealth += -3;
+            enemyHealth += -5;
         }
 
         playerScore += 10;

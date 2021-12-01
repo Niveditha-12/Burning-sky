@@ -37,7 +37,7 @@ public class Player_Control : MonoBehaviour
     }
     public void Spawn()
     {
-        Game_Control.SharedInstance.audioSource.Play();
+        //Game_Control.SharedInstance.audioSource.Play();
         if (!powerShoot)
         {
             no_of_bullets = 3;
@@ -68,7 +68,7 @@ public class Player_Control : MonoBehaviour
             
         }
          
-        Invoke("Spawn", .5f);
+        Invoke("Spawn", .2f);
 
 
 

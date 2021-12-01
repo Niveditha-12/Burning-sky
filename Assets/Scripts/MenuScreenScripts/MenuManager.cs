@@ -17,7 +17,8 @@ namespace LevelManagement
         AudioSource MyAudioSource;
         public int playerScore, healthScore=100;
         public int LevelNum;
-
+        public Text FPS;
+        public float deltaTime;
         Slider slider;
         [SerializeField]
         private Transform menuParent; //To group menus under one parent
@@ -127,6 +128,9 @@ namespace LevelManagement
 
         public void Update()
         {
+            deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
+            float fps = 1.0f / deltaTime;
+            FPS.text = "FPS : " + Mathf.Ceil(fps).ToString();
             playerScore = Game_Control.SharedInstance.playerScore;
             healthScore = Game_Control.SharedInstance.playerHealth;
         }

@@ -13,7 +13,7 @@ public class SpawnEnemies : MonoBehaviour
     public float spawnInterval = 1f;
     private int enemiesPerWave = 3;
     public GameObject enemyType1;
-    
+    AudioSource myAud;
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class SpawnEnemies : MonoBehaviour
     }
     void Start() // having enemies in a list to spawn them when needed.
     {
-
+        myAud = GetComponent<AudioSource>();
         AddEnemyToList();
         SpawnEnemy();
         StartCoroutine(SpawnEnemyWaves());
@@ -103,7 +103,7 @@ public class SpawnEnemies : MonoBehaviour
         }
         else // when player destroys all enemies load winning screen and add enemies to the list for next level.
         {
-
+            myAud.Stop();
             Time.timeScale = 0;
             EnemyList.Clear();
            

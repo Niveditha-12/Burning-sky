@@ -15,13 +15,14 @@ public class EnemyControl : MonoBehaviour
     public Animator anim;
     public GameObject Explosion;
     private AudioSource myAud;
-
+    public ParticleSystem PS;
     private void Awake()
     {
         SharedInstance = this;
     }
     void Start()
     {
+        PS = GetComponentInChildren<ParticleSystem>();
         Explosion = GameObject.Find("Explosion");
         myAud = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
@@ -69,7 +70,12 @@ public class EnemyControl : MonoBehaviour
 
         if (other.gameObject.tag == "PlayerBullet")
         {
-
+            if(PS.isPlaying)
+            {
+                PS.Stop();
+                
+            }
+            PS.Play();
             game_Control.EnemyHealth();
             other.gameObject.SetActive(false);
 
