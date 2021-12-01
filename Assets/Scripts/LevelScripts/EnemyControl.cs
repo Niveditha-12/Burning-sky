@@ -54,7 +54,7 @@ public class EnemyControl : MonoBehaviour
     {
         myAud.Play();
         spawnBullet.Spawn();
-        Invoke("Fire", 5f);// start firing every 5 seconds to the player
+        Invoke("Fire", 3f);// start firing every 5 seconds to the player
     }
 
     public void DestroEnemy()

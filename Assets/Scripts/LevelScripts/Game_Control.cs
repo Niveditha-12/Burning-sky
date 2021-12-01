@@ -153,11 +153,23 @@ public class Game_Control : MonoBehaviour
 
     public void NextStage()
     {
-        Time.timeScale = 1;
-        int levelNum = SceneManager.GetActiveScene().buildIndex + 1;
-                  
-        SceneManager.LoadScene(levelNum);
-        GameMenu.open();
+        if(MenuManager.Instance.LevelNum <=4)
+        {
+
+            Time.timeScale = 1;
+            int levelNum = SceneManager.GetActiveScene().buildIndex + 1;
+            SceneManager.LoadScene(levelNum);
+            GameMenu.open();
+
+        }
+        else
+        {
+            Time.timeScale = 0;
+            if (MenuManager.Instance != null && GameOverMenu.Instance != null)
+            {
+                MenuManager.Instance.OpenMenu(GameOverMenu.Instance);
+            }
+        }
 
     }
     public void LoadNextLevel()

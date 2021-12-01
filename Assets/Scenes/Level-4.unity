@@ -6381,6 +6381,7 @@ MonoBehaviour:
   gameOverText: {fileID: 1601362931}
   highScoreText: {fileID: 902802042}
   playerScore: 0
+  playerHealth: 100
   enemyHealth: 100
   enemy: {fileID: 0}
   spawnEnemy: {fileID: 2070312594}
@@ -6434,7 +6435,7 @@ MonoBehaviour:
   pooledObjects: []
   objectToPool: {fileID: 4171237694060933354, guid: d62dd199c5060c14788da7486b8aec86,
     type: 3}
-  amountToPool: 3
+  amountToPool: 6
 --- !u!114 &1193844726
 MonoBehaviour:
   m_ObjectHideFlags: 0

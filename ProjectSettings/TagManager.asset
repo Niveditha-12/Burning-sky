@@ -15,6 +15,7 @@ TagManager:
   - Enemy-1
   - EnemyShip
   - Obsatcle
+  - Enemy-Bullet2
   layers:
   - Default
   - TransparentFX

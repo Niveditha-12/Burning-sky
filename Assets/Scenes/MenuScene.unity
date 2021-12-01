@@ -586,6 +586,7 @@ MonoBehaviour:
   gameOverText: {fileID: 0}
   highScoreText: {fileID: 0}
   playerScore: 0
+  playerHealth: 100
   enemyHealth: 100
   enemy: {fileID: 0}
   spawnEnemy: {fileID: 0}
@@ -671,6 +672,9 @@ MonoBehaviour:
     type: 3}
   gameOverMenuPrefab: {fileID: 7505646873936531880, guid: b6bd2c3a2aa00fe4e85d416e0317bb73,
     type: 3}
+  playerScore: 0
+  healthScore: 100
+  LevelNum: 0
   menuParent: {fileID: 0}
 --- !u!82 &1932010842
 AudioSource:

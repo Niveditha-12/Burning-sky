@@ -9,7 +9,7 @@ public class SpawnEnemies : MonoBehaviour
     public Game_Control game_Control;
     public List<GameObject> EnemyList = new List<GameObject>();
     public float startWait = 1.0f;
-    public float waveInterval = 2.0f;
+    public float waveInterval = 1.0f;
     public float spawnInterval = 1f;
     private int enemiesPerWave = 3;
     public GameObject enemyType1;
@@ -51,9 +51,9 @@ public class SpawnEnemies : MonoBehaviour
     IEnumerator SpawnEnemyWaves()// spawn obstacles.
     {
 
-        if(MenuManager.Instance.LevelNum >0)
+        if(MenuManager.Instance.LevelNum >2)
         {
-            enemiesPerWave = 5;
+            enemiesPerWave = 6;
         }
         yield return new WaitForSeconds(startWait);
         while (true)
@@ -61,16 +61,14 @@ public class SpawnEnemies : MonoBehaviour
             float waveType = Random.Range(0.0f, 10.0f);
             for (int i = 0; i < enemiesPerWave; i++) //start spawning them from random positions within screen.
             {
-                Vector3 topLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, Camera.main.pixelHeight + 2, 0));
-                Vector3 topRight = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight + 2, 0));
-                Vector3 spawnPosition = new Vector3(Random.Range(topLeft.x, topRight.x), topLeft.y, 0);
+                
                 Quaternion spawnRotation = Quaternion.Euler(0, 0, 180);
                 if (waveType >= 5.0f) //spawn at random intervals.
                 {
                     GameObject bullet = EnemyPooler.SharedInstance.GetPooledObject();
                     if (bullet != null)
                     {
-                        int rRandomPosx = Random.Range(3, -3);
+                        int rRandomPosx = Random.Range(5, -5);
                         bullet.transform.position = bullet.transform.position = new Vector3(rRandomPosx, 8f, 0);
 
                         bullet.transform.rotation = this.transform.rotation;
@@ -107,9 +105,8 @@ public class SpawnEnemies : MonoBehaviour
         {
 
             Time.timeScale = 0;
-            //Winscreen.open();
             EnemyList.Clear();
-           // AddEnemyToList();
+           
         }
 
 

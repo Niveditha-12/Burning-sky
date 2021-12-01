@@ -35,12 +35,13 @@ public class Bullet_Spawn : MonoBehaviour   // bullets from the main enemy
       {
 
           Vector3 spawnPos = this.transform.parent.position + new Vector3(0, 0, 0);
-          Instantiate(bulletPrefab, spawnPos, transform.parent.rotation);
+        Instantiate(bulletPrefab, spawnPos, transform.parent.rotation);
           if (elapsedTime < 2)
           {
               Invoke("Bullet", .2f);// spawn bullets every .2s for 1 second.
           }
 
       }
+    
    
 }

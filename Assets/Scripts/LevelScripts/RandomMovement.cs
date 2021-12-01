@@ -74,7 +74,7 @@ public class RandomMovement : MonoBehaviour
 		if (other.gameObject.tag == "PlayerBullet")
 		{	
 			gameObject.SetActive(false);
-			
+			Game_Control.SharedInstance.playerScore += 1;
 
 		}
 		if (other.gameObject.tag == "Player")
