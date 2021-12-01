@@ -9,6 +9,7 @@ namespace LevelManagement
         private Game_Control game_Control;
         public void OnResumePressed()
         {
+            Game_Control.SharedInstance.audioSource.Play();
             Time.timeScale = 1;
             base.OnBackPressed();
         }

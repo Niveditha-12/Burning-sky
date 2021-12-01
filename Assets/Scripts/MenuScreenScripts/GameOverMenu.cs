@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace LevelManagement
 {
@@ -26,6 +27,7 @@ namespace LevelManagement
 
             if (MenuManager.Instance != null && MainMenu.Instance != null)
             {
+                //SceneManager.LoadScene(0);
                 MenuManager.Instance.OpenMenu(MainMenu.Instance);
                 Time.timeScale = 0;//open menu dereived from menu manager
             }

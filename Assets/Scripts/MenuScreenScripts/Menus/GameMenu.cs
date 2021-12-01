@@ -10,7 +10,7 @@ namespace LevelManagement
 
         public void OnPausePressed()
         {
-
+            Game_Control.SharedInstance.audioSource.Stop();
             Time.timeScale = 0;
             if(MenuManager.Instance != null && PauseMenu.Instance != null)
             {

@@ -103,7 +103,8 @@ public class SpawnEnemies : MonoBehaviour
         }
         else // when player destroys all enemies load winning screen and add enemies to the list for next level.
         {
-            myAud.Stop();
+            //myAud.Stop();
+            Game_Control.SharedInstance.audioSource.Stop();
             Time.timeScale = 0;
             EnemyList.Clear();
            

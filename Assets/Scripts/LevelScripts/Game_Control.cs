@@ -38,6 +38,7 @@ public class Game_Control : MonoBehaviour
     }
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         if(MenuManager.Instance.LevelNum==0)
         {
             playerHealth = 100;
@@ -146,7 +147,7 @@ public class Game_Control : MonoBehaviour
 
         //gameOverText.enabled = true; // Display the Game Over! Text
         Time.timeScale = 0; // This freezes the game
-        Time.timeScale = 0;
+        audioSource.Stop();
         if (MenuManager.Instance != null && GameOverMenu.Instance != null)
         {
             MenuManager.Instance.OpenMenu(GameOverMenu.Instance);
