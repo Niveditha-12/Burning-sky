@@ -8,7 +8,7 @@ using LevelManagement;
 public class Game_Control : MonoBehaviour
 {
     public static Game_Control SharedInstance;
-    public Text scoreText, healthText, enemyHealthText, gameOverText, highScoreText; // Note we declare two text elements here
+    public Text scoreText, healthText, enemyHealthText, gameOverText, highScoreText, levelText; // Note we declare two text elements here
     public int playerScore;
     public int playerHealth = 100;
     public int enemyHealth = 100;
@@ -24,8 +24,10 @@ public class Game_Control : MonoBehaviour
     {
         if(scoreText!=null)
         {
+            int level = MenuManager.Instance.LevelNum + 1;
+            levelText.text = "LEVEL : " +level;
             scoreText.text = "Score:" + MenuManager.Instance.playerScore.ToString();
-            healthText.text = "Health : " + MenuManager.Instance.healthScore.ToString() ;
+            healthText.text = "HEALTH : " + MenuManager.Instance.healthScore.ToString() ;
         }
       
         //PlayerPrefs.SetInt("HighScore", 0);
