@@ -10,7 +10,8 @@ namespace LevelManagement
         private Game_Control game_Control;
         public void OnNextLevelPressed()
         {
-            Game_Control.SharedInstance.Level++;
+            //Game_Control.SharedInstance.Level++;
+            MenuManager.Instance.LevelNum++;
             base.OnBackPressed();
             Game_Control.SharedInstance.NextStage();
 

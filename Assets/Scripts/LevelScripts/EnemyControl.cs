@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using LevelManagement;
 
 public class EnemyControl : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class EnemyControl : MonoBehaviour
     public Game_Control game_Control;
     public Text enemyHealth;
     public Animator anim;
-    public ParticleSystem PS;
+    public GameObject Explosion;
     private AudioSource myAud;
 
     private void Awake()
@@ -21,19 +22,19 @@ public class EnemyControl : MonoBehaviour
     }
     void Start()
     {
+        Explosion = GameObject.Find("Explosion");
         myAud = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         game_Control = FindObjectOfType<Game_Control>();
         player = GameObject.Find("Player");
-        target = player.transform;
-        PS = GetComponentInChildren<ParticleSystem>();
+        target = player.transform;    
         Fire();
     }
 
 
     void Update()
     {
-        if (Game_Control.SharedInstance.Level > 1) //move enemy when level 3 starts.
+        if(MenuManager.Instance.LevelNum > 1) //if (Game_Control.SharedInstance.Level > 1) //move enemy when level 3 starts.        
         {
             anim.SetBool("Stop", true);
         }
@@ -58,7 +59,8 @@ public class EnemyControl : MonoBehaviour
 
     public void DestroEnemy()
     {
-
+        Explosion.transform.position = this.transform.position;
+        Explosion.GetComponent<ParticleSystem>().Play();
         Destroy(this.gameObject);
     }
     void OnTriggerEnter2D(Collider2D other)

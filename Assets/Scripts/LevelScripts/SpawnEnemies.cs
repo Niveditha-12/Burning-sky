@@ -13,7 +13,7 @@ public class SpawnEnemies : MonoBehaviour
     public float spawnInterval = 1f;
     private int enemiesPerWave = 3;
     public GameObject enemyType1;
-    //Winscreen win;
+    
 
     private void Awake()
     {
@@ -51,7 +51,10 @@ public class SpawnEnemies : MonoBehaviour
     IEnumerator SpawnEnemyWaves()// spawn obstacles.
     {
 
-
+        if(MenuManager.Instance.LevelNum >0)
+        {
+            enemiesPerWave = 5;
+        }
         yield return new WaitForSeconds(startWait);
         while (true)
         {
@@ -104,7 +107,7 @@ public class SpawnEnemies : MonoBehaviour
         {
 
             Time.timeScale = 0;
-            Winscreen.open();
+            //Winscreen.open();
             EnemyList.Clear();
            // AddEnemyToList();
         }

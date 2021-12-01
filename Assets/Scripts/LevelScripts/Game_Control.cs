@@ -10,7 +10,7 @@ public class Game_Control : MonoBehaviour
     public static Game_Control SharedInstance;
     public Text scoreText, healthText, enemyHealthText, gameOverText, highScoreText; // Note we declare two text elements here
     public int playerScore;
-    int playerHealth = 100;
+    public int playerHealth = 100;
     public int enemyHealth = 100;
     public EnemyControl enemy;
     public SpawnEnemies spawnEnemy;
@@ -22,17 +22,30 @@ public class Game_Control : MonoBehaviour
 
     private void Awake()
     {
+        if(scoreText!=null)
+        {
+            scoreText.text = "Score:" + MenuManager.Instance.playerScore.ToString();
+            healthText.text = "Health : " + MenuManager.Instance.healthScore.ToString() ;
+        }
+      
         //PlayerPrefs.SetInt("HighScore", 0);
         HighScore = PlayerPrefs.GetInt("HighScore"); //get value from prefs to display recent high score.
         SharedInstance = this;
-        if (Level > 1)
-        {
-            scoreText.text = "Score:" + PresentScore.ToString(); // if player has reached different level, continue with same score.
-        }
+      
 
     }
     private void Start()
     {
+        if(MenuManager.Instance.LevelNum==0)
+        {
+            playerHealth = 100;
+        }
+        else
+        {
+            playerHealth = MenuManager.Instance.healthScore;
+        }
+        playerScore = MenuManager.Instance.playerScore;
+       
         audioSource = GetComponent<AudioSource>();
         Time.timeScale = 1;
     }
@@ -40,6 +53,7 @@ public class Game_Control : MonoBehaviour
     void Update() // save the high score, if player scores more than previous score.
     {
         PlayerPrefs.SetInt("PresentScore", playerScore);
+        PlayerPrefs.SetInt("HealthScore", playerHealth);
         if (playerScore > HighScore)
         {
             HighScore = playerScore;
@@ -112,6 +126,11 @@ public class Game_Control : MonoBehaviour
             if(enemy.tag== "Enemy-3")
             {
                 Time.timeScale = 0;
+                if (MenuManager.Instance != null && Winscreen.Instance != null)
+                {
+                    MenuManager.Instance.OpenMenu(Winscreen.Instance);
+                }
+
             }
             
             enemy.DestroEnemy();
@@ -135,9 +154,10 @@ public class Game_Control : MonoBehaviour
     public void NextStage()
     {
         Time.timeScale = 1;
-        //spawnEnemy.EnemyList.Clear();
-        spawnEnemy.AddEnemyToList();
-        spawnEnemy.SpawnEnemy();
+        int levelNum = SceneManager.GetActiveScene().buildIndex + 1;
+                  
+        SceneManager.LoadScene(levelNum);
+        GameMenu.open();
 
     }
     public void LoadNextLevel()

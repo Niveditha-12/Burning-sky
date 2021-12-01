@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using LevelManagement;
 
 public class RandomMovement : MonoBehaviour
 {
@@ -27,12 +28,12 @@ public class RandomMovement : MonoBehaviour
 
 	void Update()
 	{
-		if(Game_Control.SharedInstance.Level==0)
-        {
+		if(MenuManager.Instance.LevelNum == 0)  //if(Game_Control.SharedInstance.Level==0)
+		{
 			SpawnObsatcle();
         }
 
-		if(Game_Control.SharedInstance.Level > 0) //if player has reached more than two levels then spawn obstacles at random positions with movement.
+		if(MenuManager.Instance.LevelNum > 0) //if player has reached more than two levels then spawn obstacles at random positions with movement.
         {
 			// change to a new random direction at random intervals
 			if (Time.time >= tChange)

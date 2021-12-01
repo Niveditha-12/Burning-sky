@@ -43,7 +43,11 @@ namespace LevelManagement
         }
         private void Update()
         {
-            HighScore.text= "HIGH SCORE :" + Game_Control.SharedInstance.HighScore.ToString();
+            if(HighScore != null)
+            {
+                HighScore.text = "HIGH SCORE :" + Game_Control.SharedInstance.HighScore.ToString();
+            }
+            
         }
     }
 }

@@ -15,7 +15,9 @@ namespace LevelManagement
         public Winscreen winScreenPrefab;
         public GameOverMenu gameOverMenuPrefab;
         AudioSource MyAudioSource;
-        
+        public int playerScore, healthScore=100;
+        public int LevelNum;
+
         Slider slider;
         [SerializeField]
         private Transform menuParent; //To group menus under one parent
@@ -121,6 +123,12 @@ namespace LevelManagement
                 Menu nextMenu = MenuStack.Peek(); //refering the next top menu
                 nextMenu.gameObject.SetActive(true);//setting it active.
             }
+        }
+
+        public void Update()
+        {
+            playerScore = Game_Control.SharedInstance.playerScore;
+            healthScore = Game_Control.SharedInstance.playerHealth;
         }
     } 
 }
